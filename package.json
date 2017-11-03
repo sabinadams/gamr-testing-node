@@ -1,0 +1,28 @@
+{
+    "name": "gamr-backend",
+    "version": "1.0.0",
+    "description": "gamr-backend",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/sabinadams/gamr-backend.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/sabinadams/gamr-backend/issues"
+    },
+    "homepage": "https://github.com/sabinadams/gamr-backend#readme",
+    "dependencies": {
+        "async": "^2.5.0",
+        "body-parser": "^1.18.2",
+        "express": "^4.16.2",
+        "fs": "0.0.1-security",
+        "mysql2": "^1.4.2",
+        "redis": "^2.8.0",
+        "sequelize": "^4.22.1"
+    }
+}
