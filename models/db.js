@@ -4,6 +4,7 @@ const fs = require("fs");
 const path = require("path");
 const config = require("../config/CONSTANTS");
 var Sequelize = require("sequelize");
+
 // Can be used to determine which DB to load
 const env = process.env.NODE_ENV || "development";
 
