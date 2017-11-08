@@ -19,17 +19,17 @@ module.exports = (req, res, next) => {
         token = req.headers.authorization.split("Bearer ")[1];
     } else {
         // Otherwise the user isn't authorized
-        base.handleAuthError(res);
+        return base.handleAuthError(res);
     }
 
     _authService.validateSession(res, token, session => {
         if (session.exists) {
-            if (!session.user.active) base.handleAuthError(res, "You account is deactivated.");
+            if (!session.user.active) return base.handleAuthError(res, "You account is deactivated.");
             req.user = session.user || [];
             req.user.token = token;
-            next();
+            return next();
         } else {
-            base.handleAuthError(res);
+            return base.handleAuthError(res);
         }
     });
 
