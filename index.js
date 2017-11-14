@@ -25,5 +25,5 @@ app.use(router);
 
 // Specifies which port to run the server on.
 app.listen(1337, () => {
-    console.log('Example app listening on port 6969!');
+    console.log('Example app listening on port 1337!');
 });

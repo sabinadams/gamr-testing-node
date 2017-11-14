@@ -2,7 +2,7 @@ const _authService = require('../services/auth-service'),
     base = require('../services/base-service');
 // Unprotected routes
 const whitelist = [
-    '/route'
+    '/auth/login'
 ];
 
 module.exports = (req, res, next) => {
