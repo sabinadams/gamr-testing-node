@@ -40,7 +40,7 @@ module.exports = {
                             profile_pic: user.profile_pic,
                             banner_pic: user.banner_pic,
                             exp_count: user.exp_count,
-                            level: user.level,
+                            level: user.level
                         });
                     })
                 } else {
@@ -51,7 +51,8 @@ module.exports = {
             } else {
                 res.status(400).json({
                     message: user ?
-                        'Your account was deactivated. Please contact support with further questions.' : 'Email or password was incorrect'
+                        'Your account was deactivated. Please contact support with further questions.' :
+                        'Email or password was incorrect'
                 });
             }
         });
