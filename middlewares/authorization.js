@@ -1,5 +1,6 @@
 const _authService = require('../services/auth-service'),
-    base = require('../services/base-service');
+    base = require('../services/base-service'),
+    cluster = require('cluster');
 // Unprotected routes
 const whitelist = [
     '/auth/login'
@@ -10,8 +11,8 @@ module.exports = (req, res, next) => {
     if (req.method == "OPTIONS") return res.status(200).json({
         message: "Preflight check successful"
     });
-
-    // If the route is unprotected, go for it!
+    console.log(`[${Date.now()}]: Worker ${cluster.worker.id}`)
+        // If the route is unprotected, go for it!
     if (whitelist.indexOf(req.url) != -1) return next();
 
     // If the token existed, get the UUID

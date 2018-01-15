@@ -23,6 +23,7 @@
         "fs": "0.0.1-security",
         "mysql2": "^1.4.2",
         "redis": "^2.8.0",
-        "sequelize": "^4.22.1"
+        "sequelize": "^4.22.1",
+        "socket.io": "^2.0.4"
     }
 }

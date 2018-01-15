@@ -15,7 +15,8 @@ let sequelize = new Sequelize(
     config.db.password, {
         host: env != "development" ? config.db.host : config.db.dev_host,
         dialect: "mysql",
-        pool: { max: 5, min: 0, idle: 10000 }
+        pool: { max: 5, min: 0, idle: 10000 },
+        logging: false
     }
 );
 

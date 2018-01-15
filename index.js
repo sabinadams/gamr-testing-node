@@ -3,8 +3,9 @@ const express = require('express'),
     db = require('./models/db'),
     router = require('./controllers'),
     authorization = require('./middlewares/authorization'),
-    parser = require('body-parser');
-
+    parser = require('body-parser'),
+    cluster = require('cluster'),
+    numCPUs = require("os").cpus().length;
 
 // Parsing request/response data
 app.use(parser.json());
@@ -23,7 +24,15 @@ app.use(authorization);
 // Route Initialization
 app.use(router);
 
-// Specifies which port to run the server on.
-app.listen(1337, () => {
-    console.log('Example app listening on port 1337!');
-});
+if (cluster.isMaster) {
+    console.log(`Master ${process.pid} is running`);
+    // Fork workers.
+    for (let i = 0; i < numCPUs; i++) { cluster.fork(); }
+    cluster.on("exit", (worker, code, signal) => {
+        console.log(`worker ${worker.process.pid} died`);
+    });
+} else {
+    app.listen(1337, () => {
+        console.log(`Worker ${process.pid} listening on port 1337!`);
+    });
+}
